@@ -1,0 +1,227 @@
+@font-face {
+  font-family: customFont;
+  src: url("font/Quicksand-VariableFont_wght.ttf");
+}
+
+body {
+  --default-box-shadow: #00000022 0 0 1vmin;
+  --hover-box-shadow: #00000066 0 0 3vmin;
+  --color-up: #2c5137;
+  --color-down: #602c2c;
+  --color-slow: #686036;
+  --color-grey: #333;
+  --color-orange: #684936;
+  --color-background: #121212;
+  --color-background-2: #202020;
+  --color-warning: #2c5460;
+
+  overflow-x: hidden;
+
+  font-family: customFont, sans-serif;
+  background-color: var(--color-background);
+  padding: 2em;
+  margin: 0;
+  color: white;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+/* Types = OK, INFO, LOW, WARN, MEDIUM, HIGH, CRITICAL */
+
+.OK {background: var(--color-up);}
+.INFO { background: var(--color-grey);}
+.LOW {background: var(--color-slow);}
+.WARN {background: var(--color-warning);}
+.MEDIUM {background: var(--color-orange);}
+.HIGH {background: var(--color-down);}
+
+.NONAPP {
+  background: var(--color-grey);
+  opacity: 0.3;
+}
+
+.CRITICAL {
+  background: var(--color-down);
+  box-shadow: 0 0 1em var(--color-down);
+  filter: saturate(2);
+}
+
+#testSSL, #lighthouse, #monitorsView {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(40em, 1fr));
+  grid-gap: 2em;
+  transition: width 0.5s;
+  width: 100%;
+}
+
+@media only screen and (max-width:70vh) {
+
+  #testSSL, #lighthouse, #monitorsView {
+    grid-template-columns: auto;
+  }
+
+}
+
+#testSSL > div, #lighthouse > div {
+  padding: 1em;
+  background-color: var(--color-background-2);
+  border-radius: 1.2em;
+}
+
+#testSSL > div > p:first-child,
+#lighthouse > div > p:first-child {
+  font-weight: bolder;
+  margin: 0;
+  margin-bottom: 1em;
+  text-transform: uppercase;
+  font-size: 150%;
+}
+
+#testSSL > div > .monitors,
+#lighthouse > div > .monitors  {
+  display: grid;
+  grid-gap: 1em;
+  word-wrap: break-word;
+}
+
+#testSSL > div > .monitors > div > .title,
+#lighthouse > div > .monitors > div > .title {
+  font-weight: bold;
+}
+
+.monitors.rowOnly  {
+  grid-template-columns: auto;
+}
+
+.monitors.defaultColumn  {
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+}
+
+.monitors.smallColumn  {
+  grid-template-columns: repeat(auto-fill, minmax(8em, 1fr));
+}
+
+.monitors.bigColumn  {
+  grid-template-columns: repeat(auto-fill, minmax(25em, 1fr));
+}
+
+#testSSL > div > .monitors > div,
+#lighthouse > div > .monitors > div,
+#monitorsView > .group > .monitors > div {
+  border-radius: 0.5em;
+  padding: 1em;
+  cursor: pointer;
+}
+
+#testSSL > div > .monitors > div > p,
+#lighthouse > div > .monitors > div > p {
+  margin: 0;
+}
+
+
+
+/* Side panel stuff */
+
+#sidePanel {
+  transform: translateX(40em);
+  transition: transform 0.5s;
+  background: var(--color-background-2);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 30em;
+  box-shadow: 0 0 5vw #00000099;
+  padding: 2em;
+  grid-auto-rows: max-content;
+  overflow: auto;
+  scrollbar-width: thin;
+  box-sizing: border-box;
+  z-index: 100;
+}
+
+#sidePanel.panelOpen {
+  display: grid !important;
+  transform: translateX(0px) !important;
+}
+
+#sidePanel > #panelTitle {
+  font-size: 200%;
+  font-weight: bolder;
+  margin-bottom: 0;
+}
+
+#sidePanel > #panelSeverity {
+  width: min-content;
+  border-radius: 2.5em;
+  padding: 0.5em 1em;
+  margin-top: 0.5em;
+  margin-bottom: 1.5em;
+  box-shadow: 0 0 1em #0006;
+}
+
+#sidePanel > #closePanel {
+  cursor: pointer;
+  background: gray;
+  padding: 0.7em;
+  width: 1em;
+  border-radius: 30em;
+  height: 1em;
+  display: grid;
+  place-content: center;
+  font-weight: bolder;
+  font-size: 129%;
+  box-shadow: 0 0 1em #0006;
+}
+
+#sidePanel > #panelDescr {
+  display: grid;
+}
+
+#sidePanel table {
+  width: 100%;
+  text-align: center;
+}
+
+#sidePanel table, #sidePanel th, #sidePanel td {
+  border: 1px solid white;
+  border-collapse: collapse;
+  padding: 0.3em;
+}
+
+#sidePanel > p:last-child {
+  padding-bottom: 2em;
+}
+
+#sidePanel .subPageLink {
+  padding: 1em;
+  margin-bottom: 1em;
+  border-radius: 0.5em;
+}
+
+.mainBodyReduced {
+  width: calc(100% - 30em - 4em) !important;
+}
+
+.monitors > .monitorOnSidePanel {
+  border-style: solid;
+  border-color: white;
+  border-width: medium;
+  box-shadow: 0 0 2em #00000033;
+}
+
+@media only screen and (max-width:70vh) {
+
+  .mainBodyReduced {
+    width: inherit !important;
+  }
+
+  #sidePanel {
+    transform: translateX(40em);
+    width: 100%;
+  }
+
+}

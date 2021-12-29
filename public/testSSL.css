@@ -1,0 +1,9 @@
+#testSSL > #bilan > .monitors > div:nth-child(1) {
+  display: grid;
+  place-content: center;
+}
+
+#testSSL > #bilan > .monitors > div:nth-child(1) > p {
+  font-size: 350%;
+  margin: 0;
+}

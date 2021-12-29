@@ -1,0 +1,5 @@
+userdata/*
+!.gitkeep
+
+database.csv
+testssl.sh
